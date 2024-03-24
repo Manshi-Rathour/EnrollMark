@@ -14,9 +14,6 @@ password = os.getenv("PASSWORD")
 database = os.getenv("DATABASE")
 
 
-
-
-
 app = Flask(__name__)
 
 # Global variables to hold model and other data
@@ -47,7 +44,6 @@ def initial_setup():
     X, y = cnn_model.resize_images(student_images_dict, student_dict)
     X_scaled = X / 255
 
-
     # Define the path to the model.pkl file
     model_file = os.path.join('model', 'model.pkl')
 
@@ -77,7 +73,7 @@ def predict():
     image = request.files['image']  # Assuming single image is uploaded
 
     # Resize the image
-    resized_image = resize_image(image)
+    resized_image = cnn_model.resize_images(image)
 
     # Use the trained model to make predictions
     prediction = model.predict(resized_image)
