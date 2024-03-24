@@ -1,4 +1,4 @@
 student_images/
 venv/
 .env
-model/
+model/cnn_model.ipynb
